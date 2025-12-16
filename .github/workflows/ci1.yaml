@@ -1,0 +1,33 @@
+name: making an omelette
+on: [push]
+jobs: 
+  drive_to_tesco:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "driving to Tesco..."  
+    - run: echo "arrived at Tesco..." 
+  buy_eggs: 
+    runs-on: ubuntu-latest
+    needs: drive_to_tesco
+    steps:
+    - run: echo "take a trolley" 
+    - run: echo "drag one box of 12 eggs into trolley" 
+    - run: echo "checkout eggs in counter" 
+    - run: echo "take back into car" 
+  drive_back_home:
+    runs-on: ubunti-latest
+    needs: buy_eggs
+    steps:
+    - run: echo "drive home ..."
+  cooking_process:
+    runs-on: ubuntu-latest
+    needs: drive_back_home
+    steps:
+    - run: echo "put pan on stove"
+    - run: echo "turn stove on"
+    - run: echo "drizzle oil"
+    - run: echo "crack 12 eggs"
+    - run: echo "whip eggs"
+    - run: echo "wait for eggs to crackle"
+    - run: echo "scrape edges to make sure ommelette can be taken out"
+    - run: echo "place into plate"
