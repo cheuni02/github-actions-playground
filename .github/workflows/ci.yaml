@@ -5,4 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - run: echo "Hello GitHub Actions"
+    - run: echo ">> Hello GitHub Actions I'm building now ..."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ">> I'm testing now"  
