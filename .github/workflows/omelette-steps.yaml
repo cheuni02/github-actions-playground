@@ -1,5 +1,6 @@
 name: making an omelette
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
 jobs: 
   drive_to_tesco:
     runs-on: ubuntu-latest
