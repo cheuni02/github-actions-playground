@@ -9,5 +9,6 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    needs: build
     steps:
     - run: echo ">> I'm testing now"  
