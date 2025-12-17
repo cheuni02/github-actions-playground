@@ -1,0 +1,78 @@
+name: Prepare English Breakfast
+on:
+  workflow_dispatch:
+
+jobs:
+  prep-ingredients:
+    runs-on: ubuntu-latest
+    name: prepare ingredients
+    steps:
+      - name: chopping tomatoes
+        run: echo "chop tomatoes..."
+      - run: echo "slice mushrooms..."
+      - run: echo "slice 2 peices of black pudding..."
+      - name: Run if ingredients prep successful
+        if: success()
+        run: echo "ingredients sliced successfully! ..."
+  get-pan-ready:
+    runs-on: ubuntu-latest
+    needs: prep-ingredients
+    name: get the pan ready
+    steps:
+      - run: echo "take pan out ..."
+      - run: echo "drizzle tablespoon of olive oil ..."
+      - run: echo "wait for pan to be hot ..."
+      - run: echo "turn down the heat in order to slow cook ..."
+      - name: if pan is made hot
+        if: success()
+        run: echo "pan made hot succesfully..."
+  grill-sausage:
+    runs-on: ubuntu-latest
+    needs: get-pan-ready
+    name: grilling sausage
+    steps:
+      - run: echo "place 2 apple sausages into pan"
+      - run: echo "wait for 2 mins"
+      - run: echo "rotate sausages 90 degrees"
+      - run: echo "wait 2 mins then rotate 90 degrees 3 more times"
+      - run: echo "take out onto plate"
+      - name: if sausage grilled properly
+        if: success()
+        run: echo "wahey, sausage is ready on the plate"
+  grill-bacon:
+    runs-on: ubuntu-latest
+    needs: get-pan-ready
+    name: grilling bacon ma
+    steps:
+      - run: echo "stash 2 slices of streak bacon onto pan"
+      - run: echo "wait 2 mins"
+      - run: echo "turn the bacon slices over"
+      - run: echo "wait 2 mins"
+      - run: echo "plate up"
+      - if: success()
+        run: echo "bacon now with sausage"
+  grill-veggies:
+    runs-on: ubuntu-latest
+    needs: grill-bacon
+    name: grilling veggies
+    steps:
+      - run: echo "put the tomatoes facing down"
+      - run: echo "put the mushroooms facing down"
+      - run: echo "wait 2 mins"
+      - run: echo "turn both the tomatoes and mushrooms over"
+      - run: echo "wait 2 mins"
+      - run: echo "plate up"
+      - if: success()
+        run: echo "tomatoes and mushrooms added to the plate!"
+  grill-black-pudding:
+    runs-on: ubuntu-latest
+    needs: grill-bacon
+    name: grilling black pudding
+    steps:
+      - run: echo "place 2 black pudding slices on the space available on the pan"
+      - run: echo "wait 5 mins"
+      - run: echo "turn them over"
+      - run: echo "wait 5 mins"
+      - run: echo "plate up"
+      - if: success()
+        run: echo "black pudding on plate!"
