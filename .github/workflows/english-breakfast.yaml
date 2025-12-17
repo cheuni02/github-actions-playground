@@ -76,3 +76,9 @@ jobs:
       - run: echo "plate up"
       - if: success()
         run: echo "black pudding on plate!"
+  make-omelette:
+    name: make an omelette
+    needs: [grill-black-pudding, grill-veggies]
+    if: ${{ vars.MAKE_EGG == 'true' }}
+    uses: ./.github/workflows/omelette_steps.yaml@main
+
