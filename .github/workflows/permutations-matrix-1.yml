@@ -1,0 +1,17 @@
+name: Permutations Matrix 1
+on: 
+  push:
+  workflow_dispatch:
+jobs:
+  shopping-list:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        item: ['boots', 'wellies', 'jumper', 'socks']
+        quantity: [2,3,4,5]
+
+    name: shopping steps for these items
+    steps:
+      - run: echo "grabbing the trolley"
+      - run: echo "pushing it to isle"
+      - run: echo "grab ${{matrix.quantity}} number(s) of ${{ matrix.item}}"
