@@ -1,0 +1,43 @@
+name: using 4 pans to make English breakfast
+on:
+  workflow_dispatch:
+jobs:
+  prep-ingredients:
+    runs-on: ubuntu-latest
+    name: prepare ingredients
+    steps:
+      - name: chopping tomatoes
+        run: echo "chop tomatoes..."
+      - run: echo "slice mushrooms..."
+      - run: echo "slice 2 peices of black pudding..."
+      - name: Run if ingredients prep successful
+        if: success()
+        run: echo "ingredients sliced successfully! ..."
+  
+  cooking-ingredients:
+      runs-on: ubuntu-latest 
+      strategy:
+        fail-fast: false
+        matrix:
+          ingredients: 
+            - name: egg
+              run: echo "doing the egg"
+            - name: sausage
+              run: echo "doing the sausage"
+            - name: black pudding
+              run: echo "doing the black pudding"
+            - name: bacon
+              run: echo "doing the bacon"
+
+      name: cook ${{ matrix.ingredients.name }} on pan
+
+      steps:
+        - run: echo "take pan out ..."
+        - run: echo "drizzle tablespoon of olive oil ..."
+        - run: echo "wait for pan to be hot ..."
+        - run: echo "turn down the heat in order to slow cook ..."
+        - name: cook ingredient
+          run: echo "${{ matrix.ingredients.name }}"
+        - name: if pan is made hot
+          if: success()
+          run: echo "pan made hot succesfully..."
